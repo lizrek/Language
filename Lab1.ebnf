@@ -1,0 +1,30 @@
+Identificator = Letter { Digit | Letter }.
+SpecialSymbols = ArithmeticalOp | ComparisonOp | BracketsOp | AssignOp | Punctuation.
+ArithmeticalOp = AddOp | MultiplicationOp.
+Constant = IntegerNumber | RealNumber | BoolConstant.
+IntegerNumber = [ Sign ] UnsignedInteger.
+RealNumber = [ Sign ] UnsignedReal.
+UnsignedInteger = Digit { Digit }.
+UnsignedReal = '.' UnsignedInteger | UnsignedInteger '.' | UnsignedInteger '.' UnsignedInteger.
+Expression = ArithmeticalExpression | BoolExpression.
+BoolExpression = ArithmeticalExpression ComparisonOp ArithmeticalExpression.
+ArithmeticalExpression = [ Sign ] Terminal | ArithmeticalExpression '+' Terminal | ArithmeticalExpression '-' Terminal.
+Terminal = Power | Terminal '*' Power | Terminal '/' Power.
+Power = Factor | Power '^' Factor.
+Factor = Identificator | Constant | '(' ArithmeticalExpression ')'.
+BoolConstant = true | false.
+KeyWords = var | for | to | do | end | if | integer | real | boolean.
+Sign = '+' | '-'.
+AddOp = '+' | '-'.
+PowerOp = '^'.
+MultiplicationOp = '*' | '/' | '%'.
+ComparisonOp = '==' | '<=' | '<' | '>' | '>=' | '<>'.
+BracketsOp = '(' | ')'.
+AssignOp = '='.
+Punctuation = '.' | ',' | ':' | ';'.
+Letter = 'a' | 'b' | 'c' | 'd' | 'e' | 'f' | 'g' | 'h' | 'i' | 'j' | 'k' | 'l' | 'm' | 'n' | 'o' | 'p' | 'q' | 'r' | 's' | 't' | 'u' | 'v' | 'w' | 'x' | 'y' | 'z'.
+Digit = '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9'.
+SpecialSigns = '.' | ',' | ':' | ';' | '(' | ')' | '=' | '+' | '-' | '*' | '/' | '<' | '>' | WhiteSpace | EndOfLine.
+WhiteSpace = ' ' | '\t'.
+EndOfLine = '\n' | '\r' | '\r\n' | '\n\r'.
+EndOfFile = '\0'.
